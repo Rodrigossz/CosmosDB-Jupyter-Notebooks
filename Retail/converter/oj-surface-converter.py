@@ -32,7 +32,7 @@ for grain, df in data.groupby(['Store', 'Brand']):
         'empty': 0
     })
     df = index.merge(df, on=time_column_name, how='left')
-    df['new_date'] = pd.date_range(start + 27 * to_offset('YS') + start.week * to_offset(DS_FREQ), freq=DS_FREQ, periods = len(df))
+    df['new_date'] = (pd.date_range(start + 27 * to_offset('YS') + start.week * to_offset(DS_FREQ), freq=DS_FREQ, periods = len(df))).strftime("%m-%d-%Y")
     df.dropna(subset=['ix'], inplace=True)
     df.drop(['ix', 'empty'], inplace=True, axis=1)
     dfs.append(df)
@@ -48,7 +48,6 @@ assert data.duplicated(subset=[time_column_name, 'Store', 'Brand']).sum() == 0
 
 data.drop(time_column_name, axis=1, inplace=True)
 data.rename({'new_date': time_column_name}, axis=1, inplace=True)
-
 
 
 # Final  fixies
@@ -71,7 +70,7 @@ data.rename({'SSTRVOL': 'salesNearestWarehousesRatio'}, axis=1, inplace=True)
 data.rename({'SSTRDIST': 'distanceNearestWarehouse'}, axis=1, inplace=True)
 data.rename({'WorkingWoman': 'more1FullTimeEmployeeRatio'}, axis=1, inplace=True)
 data.rename({'Minorities': 'minoritiesRatio'}, axis=1, inplace=True)
-data.rename({'WeekStarting': 'weekStarting'}, axis=1, inplace=True)
+#data.rename({'WeekStarting': 'weekStarting'}, axis=1, inplace=True)
 data.rename({'Age60': 'ratioAge60'}, axis=1, inplace=True)
 
 
