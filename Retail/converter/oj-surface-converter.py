@@ -70,7 +70,7 @@ data.rename({'SSTRVOL': 'salesNearestWarehousesRatio'}, axis=1, inplace=True)
 data.rename({'SSTRDIST': 'distanceNearestWarehouse'}, axis=1, inplace=True)
 data.rename({'WorkingWoman': 'more1FullTimeEmployeeRatio'}, axis=1, inplace=True)
 data.rename({'Minorities': 'minoritiesRatio'}, axis=1, inplace=True)
-#data.rename({'WeekStarting': 'weekStarting'}, axis=1, inplace=True)
+data.rename({'WeekStarting': 'weekStarting'}, axis=1, inplace=True)
 data.rename({'Age60': 'ratioAge60'}, axis=1, inplace=True)
 
 
